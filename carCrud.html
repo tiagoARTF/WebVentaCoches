@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Renta de Vehículos</title>
+    <link rel="stylesheet" href="css/cardCrud.css">
+</head>
+
+<body>
+    <a style="color: aliceblue;" class="btn custom-btn smoothscroll" href="rent.html">Volver</a>
+    <div class="container">
+        <h3 style="text-align: center; font-size: 35px;">Lista de Vehiculos</h3>
+        <div class="row mt-5">
+            <div class="col1">
+                <div class="card" style="width: 18rem; height: 32.3rem;">
+                    <img src="img/carford-removebg-preview.png" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title" id="agpdesc">Ford</h5><span>FGH657</span> <br>
+                        <span class="price">200.000 / Día</span>
+                        <p class="card-text"> Disfruta de su diseño llamativo y de su desempeño excepcional en cualquier camino.</p>
+                            <a class="rent-button" id="rentButton_FGH657">Rentar</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col2">
+                <div class="card" style="width: 18rem; height: 32.4rem;">
+                    <img src="img/mazda-removebg-preview.png" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title" id="monitordesc">Mazda</h5><span>JHF787</span><br>
+                        <span class="price">$160.000 / Día</span>
+                        <p class="card-text">Mazda experiencia de conducción única y emocionante, donde cada detalle importa.</p>
+                            <a class="rent-button" id="rentButton_JHF787">Rentar</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col3">
+                <div class="card" style="width: 18rem; height: 32.3rem;">
+                    <img src="img/Volkswagen-removebg-preview.png" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title" id="monitordesc">Volkswagen</h5><span>HGT981</span><br>
+                        <span class="price">$130.000 / Día</span>
+                        <p class="card-text">Un legado de excelencia automotriz, impulsado por pasión e innovación, para superar cada aventura.</p>
+                            <a class="rent-button" id="rentButton_HGT981">Rentar</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col4">
+                <div class="card" style="width: 18rem;">
+                    <img src="img/Honda-removebg-preview.png" class="card-img-top" style="height: 200px; width: 300px;" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title" id="monitordesc">Honda</h5><span>BVD673</span><br>
+                        <span class="price">$145.000 / Día</span>
+                        <p class="card-text">Transformando la movilidad con vehículos de vanguardia, tecnología de punta y un compromiso inquebrantable con la calidad, la seguridad y la excelencia.</p>
+                            <a class="rent-button" id="rentButton_BVD673">Rentar</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col5">
+                <div class="card" style="width: 18rem; height: 33rem;">
+                    <img src="img/Hyundai-removebg-preview.png" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title" id="monitordesc">Hyundai</h5><span>ZEF994</span><br>
+                        <span class="price">$150.000 / Día</span>
+                        <p class="card-text">Innovación emocionante, diseño cautivador y rendimiento excepcional, creando un viaje lleno de posibilidades inigualables.</p>
+                            <a class="rent-button" id="rentButton_ZEF994">Rentar</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col6">
+                <div class="card" style="width: 18rem; height: 33rem; margin-top: -10px;">
+                    <img  src="img/nissan-removebg-preview.png" class="card-img-top" style="width: 300px;" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title" id="Veh3">Nissan</h5>
+                        <span class="plate">MKH442</span><br>
+                        <span class="price">$180.000 / Día</span>
+                        <p class="card-text"> Pasión por la innovación, rendimiento impecable y estilo vanguardista que redefine el placer de conducir.</p>
+                        <a href="#" class="rent-button" id="rentButton_MKH442">Rentar</a>
+                    </div>
+                </div>
+            </div> 
+        </div>
+    </div>
+    <script>
+        
+        const rentButtons = document.getElementsByClassName('rent-button');
+        for (let i = 0; i < rentButtons.length; i++) {
+            rentButtons[i].addEventListener('click', function() {
+            const plate = this.id.split('_')[1];
+            window.location.href = `rent.html?plate=${plate}`;
+            });
+        }
+        let Veh1 = document.getElementById(Veh1);
+        let Veh2 = document.getElementById(Veh2);
+        let Veh3 = document.getElementById(Veh3);
+
+
+        // Obtener los parámetros de la URL
+        const urlParams = new URLSearchParams(window.location.search);
+        const vehicleType = urlParams.get('vehicleType');
+
+        // Almacenar la información de los vehículos rentados
+        let rentedVehicles = [];
+
+        // Función para guardar la renta y eliminar el vehículo de la lista
+        function rentVehicle(vehicleType) {
+
+             window.location.href = 'rent.html';
+        }
+
+        // Función para guardar la información de la renta en el localStorage
+        function saveRentalInfo(rentalInfo) {
+            localStorage.setItem('rentalInfo', JSON.stringify(rentalInfo));
+        }
+
+        // Función para eliminar el vehículo de la lista
+        function removeVehicleFromList() {
+            const vehicleCard = event.target.closest('.card');
+            vehicleCard.remove();
+        }
+
+        
+     
+
+
+        
+      
+    </script>
+</body>
+
+</html>

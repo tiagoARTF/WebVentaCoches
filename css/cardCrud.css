@@ -1,0 +1,134 @@
+@font-face {
+  font-display: block;
+  font-family: "bootstrap-icons";
+  src: url("../fonts/bootstrap-icons.woff2?8d200481aa7f02a2d63a331fc782cfaf") format("woff2"),
+url("../fonts/bootstrap-icons.woff?8d200481aa7f02a2d63a331fc782cfaf") format("woff");
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background: url(../img/foto-carretera-rodeada-campos-hierba-seca-cielo-puesta-sol.jpg);
+  padding: 20px;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.btn {
+  background-color: transparent;
+    font-weight: semibold;
+    display: inline-block;
+    padding: 5px;
+    font-size: 1rem;
+    color: #fff;
+    padding:  0.4rem 1.5rem;
+    border: 2px solid thistle;
+    border-radius: 5px;
+    transition:  all 1s ease;
+    box-shadow: .2rem .2rem;
+    text-decoration: none;
+    transition: background-color 0.3s;
+}
+
+.btn:hover{
+  background-color: rgb(17, 0, 255);
+}
+
+
+h3 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #fff;
+  text-transform: uppercase;
+  text-shadow: 6px 0 rgb(9, 10, 12), 1px 0 blue;
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif
+}
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 -10px; /* Agrega un margen negativo para compensar el margen agregado a las columnas */
+}
+
+
+.card {
+  flex: 1 0 calc(33.33% - 20px); /* Establece el ancho de cada caja al 33.33% menos el margen */
+  margin: 10px; 
+  height: 33rem;
+  width: calc(25% - 20px);
+  margin-right: 20px;
+  margin-bottom: 20px;
+  margin-left: 150px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  background: url(../img/ciudad.jpg);
+  border-radius: 10px;
+  overflow: hidden; 
+  box-sizing: border-box; 
+}
+
+
+.card:last-child {
+  margin-right: 0;
+}
+
+.card-img-top {
+  height: 220px;
+  object-fit: cover;
+}
+
+.card-body {
+  padding: 30px;
+  background-color: #f5f5f5;
+  border-radius: 0px 0px 10px 10px;
+}
+
+.card-title {
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+.card-text {
+  margin-bottom: 10px;
+}
+
+.rent-btn, .rent-button {
+  display: inline-block;
+  align-items: center;
+  margin-top: 10px;
+  padding: 6px 12px;
+  font-size: 14px;
+  font-weight: bold;
+  color: #fff;
+  background-color: #47484a;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.rent-btn,.rent-button:hover {
+  background-color: #0220ff;
+}
+
+.price {
+  font-weight: bold;
+  color: #2d54ff;
+}
+
+.col1, .col2, .col4, .col5{
+  width: 25%;
+  float: left;
+  margin-right: 20px;
+  margin-bottom: 20px;
+}
+
+.col6{
+  clear: both;
+  margin-top: 20px;
+}

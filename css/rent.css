@@ -1,0 +1,86 @@
+body {
+  font-family: Arial, sans-serif;
+  background: url(../img/pexels-cameron-yartz-4001508.jpg);
+}
+
+.container {
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+  font-size: 35px;
+  text-align: center;
+  margin-bottom: 20px;
+  color: aliceblue;
+}
+.btn-primary{
+  background-color: gray;
+  border: none;
+}
+.btn-primary:hover{
+  background-color: blue;
+  border: none;
+}
+form {
+  display: flex;
+  flex-direction: column;
+  color: aliceblue;
+}
+
+label {
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+input[type="text"],
+input[type="date"] {
+  padding: 8px;
+  margin-bottom: 10px;
+  color: aliceblue;
+  background-color: transparent;
+  font-weight: semibold;
+  border: none;
+  border-bottom: 1px solid thistle;
+  width: 100%;
+  border-radius: 3px;
+}
+
+
+input[type="submit"]:focus {
+  background-color: blue;
+  outline: none;
+  border: none;
+}
+.smoothscroll{
+  color: aliceblue;
+}
+.smoothscroll:hover{
+  color: #3059d5;
+}
+
+.caja {
+  background-color: transparent;
+  font-weight: semibold;
+  border-radius: 0.5rem;
+  color: #3e3d3d;
+  border: 0px solid thistle;
+  cursor: pointer;
+  transition: all 1s ease;
+  margin-top: 50px;
+  backdrop-filter: blur(100px);
+  border: 0px solid;
+  margin: 125px auto;
+  padding: 50px;
+  width: 350px;
+  height: 600px;
+  background-color: transparent;
+  transition:  all 1s ease;
+  text-decoration: none;
+  transition: background-color 0.3s;
+  
+}

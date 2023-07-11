@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="css/crud.css">
+  <title>Lista de Vehículos</title>
+  
+  <style>
+    table {
+      width: 90%;
+      border-collapse: collapse;
+      margin: 0 auto;
+    }
+    
+    th, td {
+      padding: 8px;
+      text-align: center;
+      border-bottom: 1px solid #ddd;
+    }
+    
+    h1 {
+      margin-bottom: 20px;
+    }
+    
+    input[type="text"] {
+      padding: 5px;
+    }
+    
+    button {
+      padding: 5px 10px;
+    }
+    #nametable{
+      padding: 20px;
+      margin-bottom: 20px;
+      background-color: rgb(4, 35, 68);
+      border: 1px solid #060404;
+      border-bottom: 1px solid #060404 !important; 
+      width: 90%;
+    }
+    #plateInput{
+      border-radius: 5px;
+    }
+    #searchButton {
+  border-radius: 5px;
+  background-color: #4a4b4a; 
+  color: #fff;
+  padding: 5px 5px; 
+  font-size: 16px; 
+  border: none; 
+  cursor: pointer; 
+  transition: background-color 0.3s ease; 
+}
+
+#searchButton:hover {
+  background-color: #0440d8; 
+}
+
+#searchButton:focus {
+  outline: none; 
+}
+
+  </style>
+</head>
+<body>
+  <a style="color: rgb(222, 220, 237); float: left;  margin-top: -140px;" class="btn custom-btn hsmoothscroll" href="login.html">Cerrar Sesión</a>
+  <h1>Lista de Vehículos Rentados</h1>
+  
+  <div>
+    <label style="font-family: Arial, Helvetica, sans-serif; color: aliceblue;" for="plateInput">Placa:</label>
+    <input type="text" id="plateInput">
+    <button id="searchButton">Buscar</button>
+  </div>
+
+  <p id="searchResult"></p>
+  <a style="color: rgb(222, 220, 237); float: right;  margin-top: -60px;" class="btn custom-btn smoothscroll" href="returncar.html">Devolver Vehiculo</a>
+  <div class="caja">
+  <table id="nametable">
+    <tr>
+      <th>&nbsp; &nbsp; &nbsp; Placa</th>&nbsp;
+      <th>&nbsp; Marca</th>
+      <th>Precio por día</th>
+      <th>&nbsp;Estado</th>
+      <tr></tr>
+      </tr>
+  </table>
+
+  <table id="vehicleTable">
+    <tr>
+      <th>Placa</th>
+      <th>Marca</th>
+      <th>Precio por día</th>
+      <th>Estado</th>
+    </tr>
+  </table>
+</div>
+  <script src="js/crud.js"></script>
+</body>
+</html>

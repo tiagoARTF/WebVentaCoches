@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rent</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/rent.css">
+</head>
+<body>
+  <div class="caja">
+    <h1>Rentar Vehiculo</h1>
+    <form id="rentForm">
+      <div class="mb-3">
+        <label for="plateSelect" class="form-label">Placa de Vehiculo</label>
+        <select class="form-select" id="plateSelect" required>
+          <option value="">Seleccione la placa</option>
+        </select>
+      </div>
+      <div class="mb-3">
+        <label for="rentNumberInput" class="form-label">Número de Renta</label>
+        <input type="number" class="form-control" id="rentNumberInput" readonly>
+      </div>
+      <div class="mb-3">
+        <label for="startDateInput" class="form-label">Fecha Inicial</label>
+        <input type="date" class="form-control" id="startDateInput" required>
+      </div>
+      <div class="mb-3">
+        <label for="endDateInput" class="form-label">Fecha Final</label>
+        <input type="date" class="form-control" id="endDateInput" required>
+      </div>
+      <button type="button" class="btn btn-primary" onclick="saveRent()">Rentar Vehiculo</button>
+      <a class="btn custom-btn smoothscroll" href="carCrud.html">Lista de vehiculos Disponibles</a>
+      <a class="btn custom-btn smoothscroll" href="login.html">Cerrar Sesión</a>
+    </form>
+  </div>
+  <div id="vehicleList"></div>
+
+  <script>
+       const vehicleData = [
+      { plate: 'FGH657', brand: 'Ford', price: '200.000', state: 'Rentado' },
+      { plate: 'JHF787', brand: 'Mazda', price: '160.000', state: 'Rentado' },
+      { plate: 'HGT981', brand: 'Volkswagen', price: '130.000', state: 'Rentado' },
+      { plate: 'BVD673', brand: 'Honda', price: '145.000', state: 'Rentado' },
+      { plate: 'ZEF994', brand: 'Hyundai', price: '150.000', state: 'Rentado' },
+      { plate: 'MKH442', brand: 'Nissan', price: '180.000', state: 'Rentado' }
+    ];
+
+    
+    let rentCounter = 1; // Variable global para el número de renta autonumérico
+
+    // Definir el objeto de información de los vehículos disponibles
+
+    // Obtener el selector de placas
+    const plateSelect = document.getElementById('plateSelect');
+
+    // Crear las opciones del selector de placas usando los datos del objeto vehicleData
+    vehicleData.forEach(vehicle => {
+      const option = document.createElement('option');
+      option.value = vehicle.plate;
+      option.textContent = vehicle.plate;
+      plateSelect.appendChild(option);
+    });
+
+    function saveRent() {
+  // Obtener los valores del formulario
+  const plate = document.getElementById('plateSelect').value;
+  const startDate = document.getElementById('startDateInput').value;
+  const endDate = document.getElementById('endDateInput').value;
+
+  // Obtener el objeto del vehículo seleccionado del objeto vehicleData
+  const selectedVehicle = vehicleData.find(vehicle => vehicle.plate === plate);
+
+  // Verificar si el vehículo seleccionado existe
+  if (!selectedVehicle) {
+    alert('Seleccione una placa válida');
+    return;
+  }
+
+  // Obtener el arreglo de vehículos rentados almacenado en el localStorage
+  let rentedVehicles = JSON.parse(localStorage.getItem('rentedVehicles')) || [];
+
+  // Verificar si ya existe una renta para el vehículo con la placa ingresada
+  const existingRental = rentedVehicles.find(rental => rental.plate === plate);
+  if (existingRental) {
+    alert('Este vehículo ya está rentado.');
+    return;
+  }
+
+  const currentDate = new Date();
+  const currentDateString = currentDate.toISOString().split('T')[0]; // Convertir a formato 'YYYY-MM-DD'
+
+  // Comparar la fecha inicial con la fecha actual
+  if (startDate < currentDateString) {
+    alert('La fecha inicial no puede ser anterior a la fecha actual');
+    return;
+  }
+
+  // Comparar la fecha final con la fecha inicial
+  if (endDate < startDate) {
+    alert('La fecha final no puede ser anterior a la fecha inicial');
+    return;
+  }
+
+  // Crear el objeto de renta con la información del formulario
+  const rentalInfo = {
+    rentNumber: rentCounter++,
+    plate: plate,
+    brand: selectedVehicle.brand,
+    price: selectedVehicle.price,
+    state: selectedVehicle.state,
+    startDate: startDate,
+    endDate: endDate,
+    formData: {
+      plate: plate,
+      startDate: startDate,
+      endDate: endDate
+    }
+  };
+
+  // Agregar la renta al arreglo de vehículos rentados
+  rentedVehicles.push(rentalInfo);
+
+  // Guardar el arreglo de vehículos rentados en el localStorage
+  localStorage.setItem('rentedVehicles', JSON.stringify(rentedVehicles));
+
+  // Mostrar mensaje de éxito
+  alert('¡El vehículo se ha rentado exitosamente!');
+
+  // Restablecer el formulario
+  document.getElementById('rentForm').reset();
+}
+  // Obtener la placa del vehículo desde la URL
+  const urlParams = new URLSearchParams(window.location.search);
+  const plate = urlParams.get('plate');
+
+  // Establecer el valor de la placa en el campo del formulario
+  document.getElementById('plateSelect').value = plate;
+
+
+  </script>
+</body>
+</html>
